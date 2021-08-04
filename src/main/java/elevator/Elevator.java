@@ -31,6 +31,8 @@ public class Elevator {
      * осуществлено, так как с открытыми дверьми двигаться не безопасно. Также если передан этаж не подходящий под
      * возможные этажи для перещения, то лифт не должен продолжить движение. Движение будет осуществлено, если этаж
      * назначения отличается от текущего.
+     * @throws FloorOutOfBoundException когда этаж выходит за границы минимального и максимального или равен нулю.
+     * @throws DoorsAreOpenException когда двери открыты при попытке начать движение.
      * @param destinationFloor этаж назначения.
      */
     public void moveElevatorToTheFloor(int destinationFloor) {
@@ -77,6 +79,8 @@ public class Elevator {
         doorsOpen = !doorsOpen;
     }
 
-
+    public int getCurrentFloor() {
+        return currentFloor;
+    }
 
 }
