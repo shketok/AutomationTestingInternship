@@ -4,17 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.concurrent.TimeUnit;
+
 public class Browser {
     private static Browser browser;
     private WebDriver webDriver;
+    private BrowserFactory browserFactory = new BrowserFactory();
 
     private Browser() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--window-size=1920,1080");
-
-        webDriver = new ChromeDriver(chromeOptions);
+        webDriver = browserFactory.getWebDriver("firefox");
     }
 
     public static Browser getInstance() {
@@ -26,5 +24,18 @@ public class Browser {
 
     public WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    public void open(String url) {
+        webDriver.get(url);
+    }
+
+    public void setImplicitWait(long time, TimeUnit timeUnit) {
+        webDriver.manage().timeouts().implicitlyWait(time, timeUnit);
+    }
+
+    public void quit() {
+        Browser.getInstance().getWebDriver().quit();
+        browser = null;
     }
 }
