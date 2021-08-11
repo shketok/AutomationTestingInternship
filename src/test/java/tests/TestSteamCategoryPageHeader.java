@@ -8,8 +8,8 @@ public class TestSteamCategoryPageHeader extends BaseTest {
 
     @Test
     public void testSteamCategoryPageHeader() {
-        NavigationBarPage navigationBarPage = new NavigationBarPage(webDriver);
-        CategoryPage categoryPage = new CategoryPage(webDriver);
+        NavigationBarPage navigationBarPage = new NavigationBarPage();
+        CategoryPage categoryPage = new CategoryPage();
 
         navigationBarPage.clickGenreTab();
         navigationBarPage.clickSpecificGenre();
