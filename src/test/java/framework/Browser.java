@@ -1,9 +1,10 @@
 package framework;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
@@ -12,7 +13,7 @@ public class Browser {
     private BrowserFactory browserFactory = new BrowserFactory();
 
     private Browser() {
-        webDriver = browserFactory.getWebDriver("firefox");
+        webDriver = browserFactory.getWebDriver("chrome");
     }
 
     public static Browser getInstance() {
