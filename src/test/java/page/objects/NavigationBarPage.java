@@ -1,25 +1,21 @@
 package page.objects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 
-public class NavigationBarPage extends BasePage {
-    private static final String GENRE_TAB_SELECTOR = "#genre_tab";
-    private static final String RPG_PARTY_BASED_LOC = "//a[@class='popup_menu_item' and contains(@href, 'rpg_party_based')]";
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
+
+public class NavigationBarPage {
+    private SelenideElement genreTab = $("#genre_tab");
+    private SelenideElement rpgPartyBased = $x("//a[@class='popup_menu_item' and contains(@href, 'rpg_party_based')]");
+
 
     public void clickGenreTab() {
-        WebDriverWait genreTabWait = new WebDriverWait(webDriver, 10, 300);
-        WebElement genreTab = webDriver.findElement(By.cssSelector(GENRE_TAB_SELECTOR));
-        genreTabWait.until(ExpectedConditions.visibilityOf(genreTab));
         genreTab.click();
     }
 
     public void clickSpecificGenre() {
-        WebDriverWait rpgPartyBasedWait = new WebDriverWait(webDriver, 10, 300);
-        WebElement rpgPartyBasedElement = webDriver.findElement(By.xpath(RPG_PARTY_BASED_LOC));
-        rpgPartyBasedWait.until(ExpectedConditions.visibilityOf(rpgPartyBasedElement));
-        rpgPartyBasedElement.click();
+        rpgPartyBased.click();
     }
 }

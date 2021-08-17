@@ -1,17 +1,15 @@
 package page.objects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 
-public class CategoryPage extends BasePage {
-    private static final String PAGE_HEADER_LOC = "//*[@class='pageheader']";
+import static com.codeborne.selenide.Selenide.$x;
+
+public class CategoryPage {
+    private SelenideElement pageHeader = $x("//*[@class='pageheader']");
 
     public void waitUntilPageHeaderVisible() {
-        WebDriverWait pageHeaderWait = new WebDriverWait(webDriver, 10, 300);
-        WebElement pageHeader = webDriver.findElement(By.xpath(PAGE_HEADER_LOC));
-        pageHeaderWait.until(ExpectedConditions.visibilityOf(pageHeader));
+        pageHeader.shouldBe(Condition.visible);
     }
 
 
