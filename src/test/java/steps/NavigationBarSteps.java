@@ -9,6 +9,7 @@ public class NavigationBarSteps {
 
     @When("Go to the specific genre page")
     public void goToSpecificGenre() {
+        String param = (String) BaseSteps.container.get("param1");
         navigationBarPage.clickGenreTab();
         navigationBarPage.clickSpecificGenre();
     }
